@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>GraphQL fetch demo</h2>
+        <p>This example return the response from the server using GraphQL API</p>
+
+        <p id="demo"></p>
+
+        <script>
+            function fetchData() {
+                fetch('http://localhost:4000/graphql', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin' : '*'
+                    },
+                    body: JSON.stringify({"query": "{ hello }"})
+                })
+                    .then(r => r.json())
+                    .then(data => { document.getElementById("demo").innerHTML = "Response: " + JSON.stringify(data); console.log('data returned:', data) });
+                return res
+            }
+            fetchData()
+        </script> 
+    </body>
+</html>
